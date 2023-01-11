@@ -2,5 +2,18 @@
   sequenceDiagram
     participant browser
     participant server
+    browser->>server: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note
+    server->>browser: 302 URL Redirect to /exampleapp/notes
+    browser->>server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/notes
+    server->>browser: HTML-code
+    browser->>server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.css
+    server->>browser: main.css
+    browser->>server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.js
+    server->>browser: main.js
+    
+    Note over browser: browser starts executing js-code <br/> that requests JSON data from server
+    
+
+    
   
 ```
