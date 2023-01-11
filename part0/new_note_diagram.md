@@ -13,6 +13,11 @@
     
     Note over browser: browser starts executing js-code <br/> that requests JSON data from server
     
+    browser->>server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/data.json
+    server->>browser: data.json
+    
+    Note over browser: browser executes the event handler<br/>that renders notes to display
+    
 
     
   
