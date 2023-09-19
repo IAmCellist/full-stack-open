@@ -1,0 +1,41 @@
+POST http://localhost:3001/api/users/
+Content-Type: application/json
+
+{
+  "username": "goofy",
+  "name": "patrick",
+  "password": "amongus"
+}
+
+###
+GET http://localhost:3001/api/users/
+
+###
+GET http://localhost:3001/api/posts/
+
+###
+POST http://localhost:3001/api/posts/
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imdvb2Z5IiwiaWQiOiI2NDRkOThhYTBkZGYxM2RjZjU0OGQyNzciLCJpYXQiOjE2ODI4MTAzNjZ9.aipAZAitMXNzJ4_SpxCx0sLD7TgWBDnfm6zOJsp_SK4
+
+{
+  "title": "Spongebob",
+  "author": "Mr. Krabs",
+  "url": "www.google.com",
+  "userId": "644d98aa0ddf13dcf548d277"
+}
+
+###
+POST http://localhost:3001/api/login
+Content-Type: application/json
+
+{
+  "username": "goofy",
+  "password": "amongus"
+}
+
+###
+DELETE http://localhost:3001/api/posts/644dac81bbee6b93c2124b97
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imdvb2Z5IiwiaWQiOiI2NDRkOThhYTBkZGYxM2RjZjU0OGQyNzciLCJpYXQiOjE2ODI4MTAzNjZ9.aipAZAitMXNzJ4_SpxCx0sLD7TgWBDnfm6zOJsp_SK4
+

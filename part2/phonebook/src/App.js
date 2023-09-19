@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import axios from 'axios'
 import Filter from './components/Filter'
 import PersonForm from './components/PersonForm'
 import Persons from './components/Persons'
@@ -18,6 +17,14 @@ const App = () => {
     personService
       .getAll()
       .then(response => setPersons(response))
+      .catch(error => {
+        setMsg(
+          {
+            text: error.response.data.error,
+            type: "error"
+          }
+        )
+      })
   }, [])
 
   const handleNameChange = (event) => {
@@ -32,7 +39,7 @@ const App = () => {
 
   const addPerson = (event) => {
     event.preventDefault()
-    const inputName = { name: newName, num: newNum};
+    const inputName = { name: newName, number: newNum};
     if (persons.find(p => (p.name === newName)) !== undefined) {
       return replacePerson(persons.find(p => p.name === newName))
     }
@@ -49,6 +56,14 @@ const App = () => {
         setTimeout(() => {
           setMsg(null)
         }, 5000)
+      })
+      .catch(error => {
+        setMsg(
+          {
+            text: error.response.data.error,
+            type: "error"
+          }
+        )
       })
   }
 
@@ -68,12 +83,12 @@ const App = () => {
           setTimeout(() => {
             setMsg(null)
           }, 5000)
-        }) 
+        })
     }
   }
 
   const replacePerson = (oldObject) => {
-    const updateName = {...oldObject, num: newNum}
+    const updateName = {...oldObject, number: newNum}
     if (window.confirm(`${newName} is already added to phonebook, replace the old number with a new one?`)) {
       personService
         .update(updateName, oldObject.id)
@@ -88,6 +103,12 @@ const App = () => {
           setTimeout(() => {
             setMsg(null)
           }, 5000)
+        })
+        .catch(error => {
+          setMsg({
+            text: error.response.data.error,
+            type: "error"
+          })
         })
     }
   }

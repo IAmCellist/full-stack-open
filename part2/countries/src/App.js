@@ -16,7 +16,7 @@ const App = () => {
   return (
     <>
       <Search newSearch={newSearch} handleSearch={handleSearch}/>
-      <Countries />
+      <Countries newSearch={newSearch}/>
     </>
   )
 

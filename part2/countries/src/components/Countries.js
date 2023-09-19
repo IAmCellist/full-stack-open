@@ -1,7 +1,7 @@
 import {useState, useEffect} from "react"
 import axios from "axios"
 
-const Countries = () => {
+const Countries = ({newSearch}) => {
   const [countries, setCountries] = useState([])
   const [country, setCountry] = useState({})
 
